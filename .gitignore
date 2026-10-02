@@ -1,0 +1,68 @@
+# --- Segredos / ambiente ------------------------------------------------
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+auth.json
+
+# --- Materiais da cliente (originais, mockup, logo) — só local ------------
+/referencias/
+
+# --- Dependências e builds (gerados no deploy) -----------------------------
+/vendor/
+/node_modules/
+/public/build/
+/public/hot
+/public/storage
+/public/fonts-manifest.dev.json
+
+# --- Runtime do Laravel: conteúdo ignorado, pastas mantidas ----------------
+# (os .gitignore internos preservam a estrutura que o Laravel exige)
+/storage/logs/*
+!/storage/logs/.gitignore
+/storage/framework/**/*
+!/storage/framework/**/
+!/storage/framework/**/.gitignore
+/storage/app/**/*
+!/storage/app/**/
+!/storage/app/**/.gitignore
+/storage/*.key
+/storage/pail
+/bootstrap/cache/*
+!/bootstrap/cache/.gitignore
+
+# --- Banco local / dumps ---------------------------------------------------
+*.sqlite
+*.sqlite3
+*.sql
+*.dump
+*.bak
+
+# --- Logs, testes e temporários --------------------------------------------
+*.log
+.phpunit.result.cache
+/.phpunit.cache
+_ide_helper.php
+.phpactor.json
+
+# --- IDE / sistema ---------------------------------------------------------
+/.idea
+/.vscode
+/.zed
+/.nova
+/.cursor/
+/.codex
+/.claude/
+.DS_Store
+Thumbs.db
+desktop.ini
+Homestead.json
+Homestead.yaml
+
+# --- Certificados locais de proxy corporativo (Sail) — nunca versionar ----
+/docker/8.3/certs/*
+!/docker/8.3/certs/.gitkeep

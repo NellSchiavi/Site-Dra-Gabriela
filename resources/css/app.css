@@ -1,0 +1,88 @@
+@import 'tailwindcss';
+
+@source '../../storage/framework/views/*.php';
+
+/*
+ * Identidade visual da Dra. Gabriela Ferri Paes — terracota rústico, verde
+ * profundo, creme e areia, com elementos botânicos. Toda cor do site e do
+ * painel consome estes tokens.
+ */
+@theme {
+    --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    --font-serif: 'Fraunces', ui-serif, Georgia, Cambria, 'Times New Roman', serif;
+
+    --color-terracota: #b4582f;
+    /* Para texto pequeno sobre fundo claro (contraste AA ~6:1 sobre creme). */
+    --color-terracota-escuro: #8f4323;
+    --color-verde: #1e3a2c;
+    --color-verde-escuro: #152a1f;
+    --color-folha: #5d7a5a;
+    --color-creme: #f7f1e8;
+    --color-areia: #e8dcc9;
+    --color-texto: #2b2420;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 6rem;
+    }
+
+    body {
+        @apply bg-creme text-texto antialiased;
+    }
+
+    /* Evita o "flash" de conteúdo antes do Alpine.js inicializar. */
+    [x-cloak] {
+        display: none !important;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+        outline: 2px solid var(--color-terracota);
+        outline-offset: 3px;
+        border-radius: 4px;
+    }
+
+    ::selection {
+        background: color-mix(in srgb, var(--color-terracota) 25%, transparent);
+    }
+}
+
+@layer components {
+    /* Label pequena acima dos títulos de seção. */
+    .eyebrow {
+        @apply text-xs font-semibold tracking-[0.22em] uppercase;
+    }
+
+    /* CTA primário — terracota. */
+    .btn-primario {
+        @apply inline-flex items-center justify-center gap-2 rounded-full bg-terracota px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_24px_-12px_rgb(143_67_35/0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-terracota-escuro;
+    }
+
+    /* CTA secundário — contorno. */
+    .btn-contorno {
+        @apply inline-flex items-center justify-center gap-2 rounded-full border border-texto/25 px-6 py-3 text-sm font-semibold text-texto transition-colors duration-200 hover:border-terracota hover:text-terracota-escuro;
+    }
+
+    /* Botão sólido verde — usado no painel e em fundos claros. */
+    .btn-verde {
+        @apply inline-flex items-center justify-center gap-2 rounded-full bg-verde px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-verde-escuro;
+    }
+
+    .link-arrow {
+        @apply inline-flex items-center gap-1.5 text-sm font-semibold transition-transform duration-200 hover:translate-x-0.5;
+    }
+
+    /* Campo de formulário padrão (agendamento e painel). */
+    .campo {
+        @apply w-full rounded-xl border border-areia bg-white px-4 py-2.5 text-sm text-texto placeholder:text-texto/35 focus:border-terracota focus:ring-1 focus:ring-terracota focus:outline-none;
+    }
+
+    /* Textura sutil de papel/linho sobre o creme. */
+    .textura {
+        background-image: radial-gradient(color-mix(in srgb, var(--color-areia) 70%, transparent) 1px, transparent 1px);
+        background-size: 22px 22px;
+    }
+}
